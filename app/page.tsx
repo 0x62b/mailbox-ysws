@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Sidebar from "./components/Sidebar";
 
 type Reply = {
   id: number;
@@ -102,89 +103,26 @@ const items: Item[] = [
 ];
 
 export default function Home() {
-  const [type, setType] = useState<"inbox" | "drafts" | "archive" | "trash">("inbox");
+  const [page, setPage] = useState<"inbox" | "drafts" | "archive" | "trash">("inbox");
   const [selected, setSelected] = useState<Item | null>(items[0]);
 
-  const isInbox = type === "inbox";
-
   return (
-    <div className="flex h-screen bg-[#1a1f2b] text-gray-200">
-      {/* Sidebar */}
-      <nav className="w-64 bg-[#222739] p-4 flex flex-col">
-        <img src="/title.png" alt="Mailbox Logo" className="w-40 mb-6" />
+    <div className="flex h-screen bg-zinc-1000 text-gray-200">
+      <Sidebar setPage={setPage}/>
 
-        {/* Inbox */}
-        <button
-          onClick={() => {
-            setType("inbox");
-            setSelected(items[0]);
-          }}
-          className={`flex items-center gap-3 p-2 rounded hover:bg-[#2c3145] transition ${
-            type === "inbox" ? "bg-[#2c3145]" : ""
-          }`}
-        >
-          <span className="w-5 h-5 bg-gray-500 rounded inline-block" />
-          Inbox
-        </button>
-
-        {/* Drafts */}
-        <button
-          onClick={() => {
-            setType("drafts");
-            setSelected(null);
-          }}
-          className={`flex items-center gap-3 p-2 rounded hover:bg-[#2c3145] transition mt-2 ${
-            type === "drafts" ? "bg-[#2c3145]" : ""
-          }`}
-        >
-          <span className="w-5 h-5 bg-gray-500 rounded inline-block" />
-          Drafts
-        </button>
-
-        {/* Archive */}
-        <button
-          onClick={() => {
-            setType("archive");
-            setSelected(null);
-          }}
-          className={`flex items-center gap-3 p-2 rounded hover:bg-[#2c3145] transition mt-2 ${
-            type === "archive" ? "bg-[#2c3145]" : ""
-          }`}
-        >
-          <span className="w-5 h-5 bg-gray-500 rounded inline-block" />
-          Archive
-        </button>
-
-        {/* Trash */}
-        <button
-          onClick={() => {
-            setType("trash");
-            setSelected(null);
-          }}
-          className={`flex items-center gap-3 p-2 rounded hover:bg-[#2c3145] transition mt-auto ${
-            type === "trash" ? "bg-[#2c3145]" : ""
-          }`}
-        >
-          <span className="w-5 h-5 bg-gray-500 rounded inline-block" />
-          Trash
-        </button>
-      </nav>
-
-      {/* Middle List */}
-      <section className="w-2/5 flex flex-col border-r border-[#2c3145] overflow-y-auto">
-        {isInbox ? (
+      <section className="flex flex-col w-[40%] flex flex-col overflow-y-auto">
+        {page == "inbox" ? (
           items.map((item) => (
             <button
               key={item.id}
               onClick={() => setSelected(item)}
-              className={`flex items-center gap-3 p-4 rounded hover:bg-[#2c3145] transition border-b border-[#2c3145] text-left ${
-                selected?.id === item.id ? "bg-[#2c3145]" : ""
+              className={`flex flex-row p-4 gap-3 items-center hover:bg-zinc-900 transition text-start ${
+                selected?.id === item.id ? "bg-zinc-800" : ""
               }`}
             >
-              <span className="w-5 h-5 bg-gray-500 rounded inline-block" />
-              <div className="truncate flex-1">
-                <p className="font-semibold text-white truncate">{item.title}</p>
-                <p
+              <div className="flex flex-col w-full truncate">
+                <span className="font-semibold text-white truncate">{item.title}</span>
+                <span
                   className="text-gray-400 text-sm truncate"
                   dangerouslySetInnerHTML={{
                     __html: item.description.replace(/<[^>]+>/g, ""),
@@ -201,7 +139,7 @@ export default function Home() {
 
       {/* Detail Panel */}
       <main className="flex-1 p-6 bg-[#1a1f2b] overflow-y-auto max-w-full space-y-6">
-        {!isInbox || !selected ? (
+        {page !== "inbox" || !selected ? (
           <div className="text-gray-500 text-sm">Select a message to view details.</div>
         ) : (
           <>
