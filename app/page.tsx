@@ -58,9 +58,35 @@ const items: Item[] = [
   {
     id: 2,
     title: "Prizes",
-    description: `<p>Want a <strong>Linux.com Email</strong>? Sign up NOW!</p>`,
+    description: `<p>
+    Want a <strong>Linux.com Email</strong>? Sign up NOW!
+    <br><br>
+    You can RSVP <a style="color:cyan;"href="https://forms.fillout.com/t/x9cpqCQi17us"><u>here</u></a>!
+    <br><br>
+    Contact us on Slack in the #mailbox channel <a style="color:cyan;"href="https://hackclub.enterprise.slack.com/archives/C0AETGSGK6U"><u>here</u></a>!
+    </p>`,
     date: "Mar 17",
   },
+  {
+    id: 3,
+    title: "A Project by Hack Club",
+    description: `
+    <p> Hack Club is a 501(c)(3) nonprofit and network of 60k+ technical high schoolers. 
+    We believe you learn best by building so we're creating community and providing grants 
+    so you can make awesome projects. In the past few years, we've partnered with GitHub 
+    to run Summer of Making, hosted the world's longest hackathon on land, and ran 
+    Canada's largest high school hackathon.
+    <br><br>
+    At Hack Club, students aren't just learning, they're shipping.
+    <br><br>
+    <i>Built with love, by teens, for teens</i>
+    <br><br>
+    </p><p style="font-size: 10px;">
+    Made by Hack Clubbers in Australia for Hack Clubbers of the world
+    <br>
+    `,
+    date: "Mar 17",
+  }
 ];
 
 export default function Home() {
@@ -70,7 +96,7 @@ export default function Home() {
     <div className="flex h-screen bg-[#1a1f2b] text-gray-200">
       {/* Sidebar */}
       <nav className="w-64 bg-[#222739] p-4 flex flex-col">
-        <h1 className="text-2xl font-bold mb-8 text-white">Mailbox</h1>
+        <img src="/title.png" alt="Mailbox Logo" className="w-40 mb-6" />
         <button
           onClick={() => setSelected(items[0])}
           className={`flex items-center gap-3 p-2 rounded hover:bg-[#2c3145] transition ${
