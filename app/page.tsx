@@ -81,9 +81,15 @@ const items: Item[] = [
     <br><br>
     <i>Built with love, by teens, for teens</i>
     <br><br>
-    </p><p style="font-size: 10px;">
+    </p><p style="font-size:12px;">
     Made by Hack Clubbers in Australia for Hack Clubbers of the world
-    <br>
+    <br><br>
+    Hosted by: <br>
+    <a href="https://hackclub.enterprise.slack.com/team/U092839T3A7"><u>0x62</u> <br>
+    <a href="https://hackclub.enterprise.slack.com/team/U09F7EZDM0E"><u>captch</u></a> <br>
+    <a href="https://hackclub.enterprise.slack.com/team/U092DB4LGMP"><u>obob</u></a>  <br>
+    <a href="https://hackclub.enterprise.slack.com/team/U09C832RGJW"><u>willgob</u></a> <br>
+    </p>
     `,
     date: "Mar 17",
   }
