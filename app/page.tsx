@@ -138,44 +138,38 @@ export default function Home() {
       </section>
 
       {/* Detail Panel */}
-      <main className="flex-1 p-6 bg-[#1a1f2b] overflow-y-auto max-w-full space-y-6">
+      <main className="flex-1 p-6 bg-zinc-900 overflow-y-auto max-w-full space-y-6">
         {page !== "inbox" || !selected ? (
-          <div className="text-gray-500 text-sm">Select a message to view details.</div>
+          <span>Select a message to view details.</span>
         ) : (
           <>
-            <section className="bg-[#222739] border border-gray-700 rounded-lg p-6 shadow-sm">
+            <section className="bg-zinc-800 rounded-md p-6">
               <h2 className="text-xl font-bold text-white mb-1">{selected.title}</h2>
               <time className="text-gray-400 text-sm mb-4 block">{selected.date}</time>
               <hr className="border-gray-600 mb-4" />
 
-              <div
-                className="prose prose-invert max-w-full"
-                dangerouslySetInnerHTML={{ __html: selected.description }}
-              />
+              <div className="w-full" dangerouslySetInnerHTML={{ __html: selected.description }}/>
 
-              {selected.attachments?.length ? (
-                <div className="mt-4 flex flex-wrap gap-3">
-                  {selected.attachments.map((att, i) => (
-                    <a
-                      key={i}
-                      href={att.url}
-                      download
-                      className="bg-[#2c3145] px-3 py-1 rounded hover:bg-[#3a4160] text-sm text-gray-300"
-                    >
-                      {att.name} ({att.size})
-                    </a>
-                  ))}
-                </div>
-              ) : null}
+              <div className="my-2 flex flex-wrap gap-3">
+                {selected?.attachments?.map((att, i) => (
+                  <a
+                    key={i}
+                    href={att.url}
+                    className="bg-zinc-700 hover:bg-zinc-600 rounded-md p-2 transition text-sm"
+                  >
+                    {att.name} ({att.size})
+                  </a>
+                ))}
+              </div>
 
-              <div className="mt-6 flex gap-3">
-                <button className="px-3 py-1 rounded bg-[#2c3145] hover:bg-[#3a4160] transition text-sm">
+              <div className="flex my-2 gap-3">
+                <button className="bg-blue-500 hover:bg-blue-600 p-2 rounded-md transition text-sm">
                   Reply
                 </button>
-                <button className="px-3 py-1 rounded bg-[#2c3145] hover:bg-[#3a4160] transition text-sm">
+                <button className="bg-blue-500 hover:bg-blue-600 p-2 rounded-md transition text-sm">
                   Forward
                 </button>
-                <button className="px-3 py-1 rounded bg-[#2c3145] hover:bg-[#3a4160] transition text-sm">
+                <button className="bg-red-500 hover:bg-red-600 p-2 rounded-md transition text-sm">
                   Delete
                 </button>
               </div>
@@ -184,12 +178,12 @@ export default function Home() {
             {selected.replies?.map((reply) => (
               <section
                 key={reply.id}
-                className="bg-[#1a2233] border border-gray-600 rounded-lg p-4 shadow-sm"
+                className="bg-zinc-800 rounded-md p-4"
               >
-                <time className="text-gray-400 text-xs mb-2 block">{reply.date}</time>
+                <time className="block text-gray-400 text-xs mb-2">{reply.date}</time>
 
                 <div
-                  className="prose prose-invert max-w-full"
+                  className="w-full"
                   dangerouslySetInnerHTML={{ __html: reply.content }}
                 />
 
@@ -200,7 +194,7 @@ export default function Home() {
                         key={i}
                         href={att.url}
                         download
-                        className="bg-[#2c3145] px-3 py-1 rounded hover:bg-[#3a4160] text-sm text-gray-300"
+                        className="bg-zinc-700 hover:bg-zinc-600 p-2 rounded-md transition text-sm"
                       >
                         {att.name} ({att.size})
                       </a>
