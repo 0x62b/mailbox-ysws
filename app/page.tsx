@@ -95,7 +95,6 @@ export default function Home() {
                       <a
                         key={i}
                         href={att.url}
-                        download
                         className="bg-zinc-700 hover:bg-zinc-600 p-2 rounded-md transition text-sm"
                       >
                         {att.name} ({att.size})

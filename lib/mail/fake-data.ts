@@ -5,41 +5,31 @@ export const emails: Item[] = [
     id: 1,
     title: "Welcome to Mailbox!",
     description: `
-      <h3 style="font-size: 20px">Hello!</h3> <br>
+      <b>Hello!</b> <br>
       <p>
       This is Mailbox, a Hack Club YSWS where you ship Linux and we ship Linux! Or put
-      more simply, you ship us something related to Linux and we ship you back (mostly)
+      more simply, you ship us something related to Linux and we ship you back
       Linux-related prizes! This includes:
       <br> <br>
       <ul>
       <li>  ● A lifetime linux.com email alias worth $249!</li>
       <li>  ● Raspberry Pis</li>
-      <li>  ● Random Acess Memory, in this economy!</li>
+      <li>  ● Mini PCs</li>
       </ul>
       <br>
       We hope you have fun!
       <br><br>
-      Yours Sincerely,
-      <br><br>
       <b>The Mailbox Team</b>
       </p>
     `,
-    date: "Mar 16",
-    attachments: [
-      { name: "WelcomeGuide.pdf", size: "1.2MB", url: "#" },
-      { name: "GettingStarted.zip", size: "4.3MB", url: "#" },
-    ],
+    date: "Mar 16, 6:09 PM",
+    attachments: [],
     replies: [
       {
         id: 101,
-        content: `<p>Lorem Ipsum</p>`,
-        date: "Mar 16, 3:45 PM",
-      },
-      {
-        id: 102,
-        content: `<p>Lorem Ipsum</p>`,
-        date: "Mar 16, 6:7 PM",
-        attachments: [{ name: "ProjectIdeas.docx", size: "850KB", url: "#" }],
+        content: `<p>Need some project ideas?</p>`,
+        date: "Mar 16, 6:07 PM",
+        attachments: [{ name: "project_ideas.txt", size: "850KB", url: "/project_ideas.txt" }],
       },
     ],
   },
@@ -51,7 +41,7 @@ export const emails: Item[] = [
       <br><br>
       You can RSVP <a style="color:cyan;" href="https://forms.fillout.com/t/x9cpqCQi17us"><u>here</u></a>!
       <br><br>
-      Contact us on Slack in #mailbox <a style="color:cyan;" href="https://hackclub.enterprise.slack.com/archives/C0AETGSGK6U"><u>here</u></a>!
+      Join us on Slack in #mailbox <a style="color:cyan;" href="https://hackclub.enterprise.slack.com/archives/C0AETGSGK6U"><u>here</u></a>!
     </p>`,
     date: "Mar 17",
   },
@@ -70,9 +60,8 @@ export const emails: Item[] = [
     <i>Built with love, by teens, for teens</i>
     <br><br>
     </p><p style="font-size:12px;">
-    Made by Hack Clubbers in Australia for Hack Clubbers of the world
-    <br><br>
-    Hosted by: <br>
+    The team
+    <br>
     <a href="https://hackclub.enterprise.slack.com/team/U092839T3A7"><u>0x62</u> <br>
     <a href="https://hackclub.enterprise.slack.com/team/U09F7EZDM0E"><u>captch</u></a> <br>
     <a href="https://hackclub.enterprise.slack.com/team/U092DB4LGMP"><u>obob</u></a>  <br>
