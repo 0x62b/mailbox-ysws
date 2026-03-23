@@ -10,23 +10,23 @@ export default function Home() {
   const [selected, setSelected] = useState<Item | null>(emails[0]);
 
   return (
-    <div className="flex h-screen bg-zinc-1000 text-gray-200">
+    <div className="flex h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-gray-100">
       <Sidebar setPage={setPage}/>
 
-      <section className="flex flex-col w-[40%] flex flex-col overflow-y-auto">
+      <section className="bg-gray-50 dark:bg-zinc-900 flex flex-col w-[40%] flex flex-col overflow-y-auto border-r border-gray-200 dark:border-zinc-800">
         {page == "inbox" ? (
           emails.map((item) => (
             <button
               key={item.id}
               onClick={() => setSelected(item)}
-              className={`flex flex-row p-4 gap-3 items-center hover:bg-zinc-900 transition text-start ${
-                selected?.id === item.id ? "bg-zinc-800" : ""
+              className={`flex flex-row p-4 gap-3 items-center hover:bg-gray-100 dark:hover:bg-zinc-800 transition text-start ${
+                selected?.id === item.id ? "bg-gray-200 dark:bg-zinc-800" : ""
               }`}
             >
               <div className="flex flex-col w-full truncate">
-                <span className="font-semibold text-white truncate">{item.title}</span>
+                <span className="font-semibold text-zinc-900 dark:text-white truncate">{item.title}</span>
                 <span
-                  className="text-gray-400 text-sm truncate"
+                  className="text-gray-600 dark:text-gray-400 text-sm truncate"
                   dangerouslySetInnerHTML={{
                     __html: item.description.replace(/<[^>]+>/g, ""),
                   }}
@@ -36,28 +36,28 @@ export default function Home() {
             </button>
           ))
         ) : (
-          <div className="p-6 text-gray-500 text-sm">No messages here.</div>
+          <div className="p-6 text-gray-500 dark:text-gray-400 text-sm">No messages here.</div>
         )}
       </section>
 
-      <main className="flex-1 p-6 bg-zinc-900 overflow-y-auto max-w-full space-y-6">
+      <main className="flex-1 p-6 bg-white dark:bg-zinc-900 overflow-y-auto max-w-full space-y-6">
         {page !== "inbox" || !selected ? (
-          <span>Select a message to view details.</span>
+          <span className="text-zinc-600 dark:text-gray-400">Select a message to view details.</span>
         ) : (
           <>
-            <section className="bg-zinc-800 rounded-md p-6">
-              <h2 className="text-xl font-bold text-white mb-1">{selected.title}</h2>
-              <time className="text-gray-400 text-sm mb-4 block">{selected.date}</time>
-              <hr className="border-gray-600 mb-4" />
+            <section className="bg-gray-50 dark:bg-zinc-800 rounded-md p-6 border border-gray-200 dark:border-zinc-700">
+              <h2 className="text-xl font-bold text-zinc-900 dark:text-white mb-1">{selected.title}</h2>
+              <time className="text-gray-600 dark:text-gray-400 text-sm mb-4 block">{selected.date}</time>
+              <hr className="border-gray-300 dark:border-zinc-700 mb-4" />
 
-              <div className="w-full" dangerouslySetInnerHTML={{ __html: selected.description }}/>
+              <div className="w-full text-zinc-900 dark:text-gray-100" dangerouslySetInnerHTML={{ __html: selected.description }}/>
 
               <div className="my-2 flex flex-wrap gap-3">
                 {selected?.attachments?.map((att, i) => (
                   <a
                     key={i}
                     href={att.url}
-                    className="bg-zinc-700 hover:bg-zinc-600 rounded-md p-2 transition text-sm"
+                    className="bg-gray-200 hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-md p-2 transition text-sm text-zinc-900 dark:text-white"
                   >
                     {att.name} ({att.size})
                   </a>
@@ -65,13 +65,13 @@ export default function Home() {
               </div>
 
               <div className="flex my-2 gap-3">
-                <button className="bg-blue-500 hover:bg-blue-600 p-2 rounded-md transition text-sm">
+                <button className="bg-blue-500 hover:bg-blue-600 p-2 rounded-md transition text-sm text-white">
                   Reply
                 </button>
-                <button className="bg-blue-500 hover:bg-blue-600 p-2 rounded-md transition text-sm">
+                <button className="bg-blue-500 hover:bg-blue-600 p-2 rounded-md transition text-sm text-white">
                   Forward
                 </button>
-                <button className="bg-red-500 hover:bg-red-600 p-2 rounded-md transition text-sm">
+                <button className="bg-red-500 hover:bg-red-600 p-2 rounded-md transition text-sm text-white">
                   Delete
                 </button>
               </div>
@@ -80,12 +80,12 @@ export default function Home() {
             {selected.replies?.map((reply) => (
               <section
                 key={reply.id}
-                className="bg-zinc-800 rounded-md p-4"
+                className="bg-gray-50 dark:bg-zinc-800 rounded-md p-4 border border-gray-200 dark:border-zinc-700"
               >
-                <time className="block text-gray-400 text-xs mb-2">{reply.date}</time>
+                <time className="block text-gray-600 dark:text-gray-400 text-xs mb-2">{reply.date}</time>
 
                 <div
-                  className="w-full"
+                  className="w-full text-zinc-900 dark:text-gray-100"
                   dangerouslySetInnerHTML={{ __html: reply.content }}
                 />
 
@@ -95,7 +95,7 @@ export default function Home() {
                       <a
                         key={i}
                         href={att.url}
-                        className="bg-zinc-700 hover:bg-zinc-600 p-2 rounded-md transition text-sm"
+                        className="bg-gray-200 hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 p-2 rounded-md transition text-sm text-zinc-900 dark:text-white"
                       >
                         {att.name} ({att.size})
                       </a>
