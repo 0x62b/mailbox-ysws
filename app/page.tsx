@@ -7,15 +7,29 @@ import { type Item } from "@/lib/mail/types";
 
 export default function Home() {
   const [page, setPage] = useState<"inbox" | "drafts" | "archive" | "trash">("inbox");
+  const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<Item | null>(emails[0]);
+
+  const filteredEmails = emails.filter((item) => {
+    const query = search.toLowerCase().trim();
+
+    if (!query) {
+      return true;
+    }
+
+    const description = item.description.replace(/<[^>]+>/g, "").toLowerCase();
+
+    return item.title.toLowerCase().includes(query) || description.includes(query);
+  });
 
   return (
     <div className="flex h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-gray-100">
-      <Sidebar setPage={setPage}/>
+      <Sidebar search={search} setSearch={setSearch} setPage={setPage}/>
 
       <section className="bg-gray-50 dark:bg-zinc-900 flex flex-col w-[40%] flex flex-col overflow-y-auto border-r border-gray-200 dark:border-zinc-800">
         {page == "inbox" ? (
-          emails.map((item) => (
+          filteredEmails.length ? (
+            filteredEmails.map((item) => (
             <button
               key={item.id}
               onClick={() => setSelected(item)}
@@ -34,7 +48,10 @@ export default function Home() {
               </div>
               <time className="text-gray-500 text-xs whitespace-nowrap">{item.date}</time>
             </button>
-          ))
+            ))
+          ) : (
+            <div className="p-6 text-gray-500 dark:text-gray-400 text-sm">No matching messages.</div>
+          )
         ) : (
           <div className="p-6 text-gray-500 dark:text-gray-400 text-sm">No messages here.</div>
         )}
