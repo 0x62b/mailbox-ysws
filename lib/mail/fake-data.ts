@@ -22,13 +22,13 @@ export const emails: Item[] = [
       <b>The Mailbox Team</b>
       </p>
     `,
-    date: "Mar 16, 6:09 PM",
+    date: "Mar 16, 18:09",
     attachments: [],
     replies: [
       {
         id: 101,
         content: `<p>Need some project ideas?</p>`,
-        date: "Mar 16, 6:07 PM",
+        date: "Mar 16, 18:07",
         attachments: [{ name: "project_ideas.txt", size: "850KB", url: "/project_ideas.txt" }],
       },
     ],
@@ -43,10 +43,28 @@ export const emails: Item[] = [
       <br><br>
       Join us on Slack in #mailbox <a style="color:cyan;" href="https://hackclub.enterprise.slack.com/archives/C0AETGSGK6U"><u>here</u></a>!
     </p>`,
-    date: "Mar 17",
+    date: "Mar 16, 18:07",
   },
   {
     id: 3,
+    title: "FAQ",
+    description: `<b>Frequently asked questions</b>
+    <br/><br/>
+    <u>Who can participate?</u><br/>
+    <span>Anyone 13-18 can participate!</span>
+    <br/><br/>
+    <u>What is Hack Club?</u>
+    <br/>
+    <span>See the email below!</span>
+    <br/><br/>
+    <u>What counts as Linux-related?</u>
+    <br/>
+    <span>Anything that is related to a part of Linux or Linux distros.
+    Being able to run on Linux does not automatically mean it is Linux-related.</span>`,
+    date: "Mar 16, 18:04"
+  },
+  {
+    id: 4,
     title: "A Project by Hack Club",
     description: `
       <p> Hack Club is a 501(c)(3) nonprofit and network of 60k+ technical high schoolers.
@@ -68,6 +86,6 @@ export const emails: Item[] = [
     <a href="https://hackclub.enterprise.slack.com/team/U09C832RGJW"><u>willgob</u></a> <br>
     </p>
     `,
-    date: "Mar 17",
+    date: "Mar 16, 18:00",
   },
 ];
