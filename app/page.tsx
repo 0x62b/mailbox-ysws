@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-gray-100">
-      <Sidebar search={search} setSearch={setSearch} setPage={setPage} mobileView={mobileView} setMobileView={setMobileView}/>
+      <Sidebar setPage={setPage} mobileView={mobileView} setMobileView={setMobileView}/>
 
       <section className={`bg-gray-50 dark:bg-zinc-900 flex-col w-full md:w-[40%] overflow-y-auto border-r border-gray-200 dark:border-zinc-800 ${mobileView === 'list' ? 'flex' : 'hidden md:flex'}`}>
         <div className="md:hidden p-4 border-b border-gray-200 dark:border-zinc-800 flex items-center gap-3">
@@ -34,6 +34,12 @@ export default function Home() {
             </button>
             <span className="font-semibold text-lg capitalize">{page}</span>
         </div>
+        <input
+          className="bg-gray-100 dark:bg-zinc-900 p-4"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         {page == "inbox" ? (
           filteredEmails.length ? (
             filteredEmails.map((item) => (
@@ -71,6 +77,7 @@ export default function Home() {
         <button className="md:hidden mb-4 p-2 bg-gray-200 dark:bg-zinc-800 rounded-md" onClick={() => setMobileView('list')}>
             ←
         </button>
+        
         {page !== "inbox" || !selected ? (
           <span className="text-zinc-600 dark:text-gray-400">Select a message to view details.</span>
         ) : (
