@@ -9,6 +9,7 @@ export default function Home() {
   const [page, setPage] = useState<"inbox" | "drafts" | "archive" | "trash">("inbox");
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<Item | null>(emails[0]);
+  const [mobileView, setMobileView] = useState<"sidebar" | "list" | "detail">("list");
 
   const filteredEmails = emails.filter((item) => {
     const query = search.toLowerCase().trim();
@@ -24,15 +25,24 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-gray-100">
-      <Sidebar search={search} setSearch={setSearch} setPage={setPage}/>
+      <Sidebar search={search} setSearch={setSearch} setPage={setPage} mobileView={mobileView} setMobileView={setMobileView}/>
 
-      <section className="bg-gray-50 dark:bg-zinc-900 flex flex-col w-[40%] flex flex-col overflow-y-auto border-r border-gray-200 dark:border-zinc-800">
+      <section className={`bg-gray-50 dark:bg-zinc-900 flex-col w-full md:w-[40%] overflow-y-auto border-r border-gray-200 dark:border-zinc-800 ${mobileView === 'list' ? 'flex' : 'hidden md:flex'}`}>
+        <div className="md:hidden p-4 border-b border-gray-200 dark:border-zinc-800 flex items-center gap-3">
+            <button onClick={() => setMobileView('sidebar')} className="p-2 bg-gray-200 dark:bg-zinc-800 rounded-md">
+                ←
+            </button>
+            <span className="font-semibold text-lg capitalize">{page}</span>
+        </div>
         {page == "inbox" ? (
           filteredEmails.length ? (
             filteredEmails.map((item) => (
             <button
               key={item.id}
-              onClick={() => setSelected(item)}
+              onClick={() => {
+                setSelected(item);
+                setMobileView('detail');
+              }}
               className={`flex flex-row p-4 gap-3 items-center hover:bg-gray-100 dark:hover:bg-zinc-800 transition text-start ${
                 selected?.id === item.id ? "bg-gray-200 dark:bg-zinc-800" : ""
               }`}
@@ -57,7 +67,10 @@ export default function Home() {
         )}
       </section>
 
-      <main className="flex-1 p-6 bg-white dark:bg-zinc-900 overflow-y-auto max-w-full space-y-6">
+      <main className={`flex-1 p-6 bg-white dark:bg-zinc-900 overflow-y-auto max-w-full space-y-6 ${mobileView === 'detail' ? 'block w-full' : 'hidden md:block'}`}>
+        <button className="md:hidden mb-4 p-2 bg-gray-200 dark:bg-zinc-800 rounded-md" onClick={() => setMobileView('list')}>
+            ←
+        </button>
         {page !== "inbox" || !selected ? (
           <span className="text-zinc-600 dark:text-gray-400">Select a message to view details.</span>
         ) : (
