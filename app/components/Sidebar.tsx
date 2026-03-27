@@ -23,7 +23,7 @@ export default function Sidebar({setPage, mobileView, setMobileView}: SidebarPro
       >
         <img
           src="/envelope.svg"
-          className="w-[20%] sm:w-[10%] pr-2"
+          className="w-[15%] pr-2"
           style={{ filter: "var(--icon-filter)" }}
         />
         Inbox
@@ -35,7 +35,7 @@ export default function Sidebar({setPage, mobileView, setMobileView}: SidebarPro
       >
         <img
           src="/file.svg"
-          className="w-[20%] sm:w-[10%] pr-2"
+          className="w-[15%] pr-2"
           style={{ filter: "var(--icon-filter)" }}
         />
         Drafts
@@ -47,7 +47,7 @@ export default function Sidebar({setPage, mobileView, setMobileView}: SidebarPro
       >
         <img
           src="/archive.svg"
-          className="w-[20%] sm:w-[10%] pr-2"
+          className="w-[15%] pr-2"
           style={{ filter: "var(--icon-filter)" }}
         />
         Archive
@@ -59,7 +59,7 @@ export default function Sidebar({setPage, mobileView, setMobileView}: SidebarPro
       >
         <img
           src="/trash.svg"
-          className="w-[20%] sm:w-[10%] pr-2"
+          className="w-[15%] pr-2"
           style={{ filter: "var(--icon-filter)" }}
         />
         Trash
