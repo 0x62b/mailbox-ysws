@@ -81,7 +81,7 @@ export const emails: Item[] = [
     The team
     <br>
     <a href="https://hackclub.enterprise.slack.com/team/U092839T3A7"><u>0x62</u> <br>
-    <a href="https://hackclub.enterprise.slack.com/team/U09F7EZDM0E"><u>captch</u></a> <br>
+    <a href="https://hackclub.enterprise.slack.com/team/U09F7EZDM0E"><u>harryzhu0</u></a> <br>
     <a href="https://hackclub.enterprise.slack.com/team/U092DB4LGMP"><u>obob</u></a>  <br>
     <a href="https://hackclub.enterprise.slack.com/team/U09C832RGJW"><u>willgob</u></a> <br>
     </p>
