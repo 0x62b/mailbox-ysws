@@ -27,9 +27,9 @@ export const emails: Item[] = [
     replies: [
       {
         id: 101,
-        content: `<p>Need some project ideas?</p>`,
+        content: `<p>Need some inspiration?</p>`,
         date: "Mar 16, 18:07",
-        attachments: [{ name: "project_ideas.txt", size: "850KB", url: "/project_ideas.txt" }],
+        attachments: [{ name: "projects.txt", size: "2KB", url: "/projects.txt" }],
       },
     ],
   },
