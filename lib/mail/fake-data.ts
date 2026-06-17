@@ -84,7 +84,7 @@ export const emails: Item[] = [
   },
   {
     id: 5,
-    title: "A Project by Hack Club",
+    title: "The team",
     description: `
       <p> Hack Club is a 501(c)(3) nonprofit and network of 60k+ technical high schoolers.
       We believe you learn best by building so we're creating community and providing grants
